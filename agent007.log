@@ -1,0 +1,36 @@
+[2020-10-14 14:42:28.00] Error: 
+[2020-10-14 14:42:28.00]
+{
+  "name": "RequestError",
+  "message": "Error: socket hang up",
+  "cause": {
+    "code": "ECONNRESET"
+  },
+  "error": {
+    "code": "ECONNRESET"
+  },
+  "options": {
+    "method": "POST",
+    "uri": "http://localhost:14010/relayMessage",
+    "body": {
+      "text": "How about if I sell you for 0 USD.",
+      "speaker": "Watson",
+      "role": "seller",
+      "addressee": "Human",
+      "environmentUUID": "abcdefg",
+      "timeStamp": "2020-10-14T19:40:27.992Z",
+      "bid": {
+        "quantity": {},
+        "type": "SellOffer",
+        "price": {
+          "unit": "USD",
+          "value": 0
+        }
+      }
+    },
+    "json": true,
+    "simple": true,
+    "resolveWithFullResponse": false,
+    "transform2xxOnly": false
+  }
+}

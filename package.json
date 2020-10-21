@@ -1,0 +1,30 @@
+{
+  "name": "agent-jok",
+  "version": "0.0.2",
+  "private": true,
+  "main": "agent-jok.js",
+  "scripts": {
+    "start": "node agent-jok.js -level 2 > agent001.log &",
+    "pretest": "eslint --ignore-path .gitignore .",
+    "start-docker": "node agent-jok.js -level 2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/humaine-anac/agent-jok"
+  },
+  "author": "Jeff Kephart",
+  "dependencies": {
+    "@cisl/zepto-logger": "^1.1.0",
+    "body-parser": "^1.19.0",
+    "dotenv": "^4.0.0",
+    "express": "^4.17.1",
+    "ibm-watson": "^5.6.0",
+    "lodash": "^4.17.19",
+    "method-override": "^3.0.0",
+    "minimist": "^1.2.5",
+    "prettier": "^1.16.1",
+    "request": "*",
+    "request-promise": "^4.2.5",
+    "xregexp": "^2.0"
+  }
+}
