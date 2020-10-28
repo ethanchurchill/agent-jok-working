@@ -36,20 +36,37 @@ const rejectionMessages = [
   "Sorry. You're going to have to do a lot better than that!",
   "I'm afraid that offer isn't going to cut it.",
   "Sorry, but that is too low of an offer.",
-  "No thanks. Your offer is not high enough."
+  "No thanks. Your offer is not high enough.",
+  "No deal!",
+  "I can't accept such a low price.",
+  "That offer won't work for me.",
+  "No thanks, I can't sell for that low.",
+  "That offer is ridiculous! No deal!",
+  "Unfortunately that's too low for me."
 ];
 
 const acceptanceMessages = [
   "You've got a deal! I'll sell you",
   "You've got it! I'll let you have",
   "I accept your offer. Just to confirm, I'll give you",
-  "Yeah that's it! I'll part with"
+  "Yeah that's it! I'll part with",
+  "I'll accept that offer for",
+  "Great! I'll sell you",
+  "Perfect, I'll sell you",
+  "That's a fine price for",
+  "Okay! I'll give you",
 ];
 
 const confirmAcceptanceMessages = [
   "I confirm that I'm selling you ",
   "I'm so glad! This is to confirm that I'll give you ",
-  "Perfect! Just to confirm, I'm giving you "
+  "Perfect! Just to confirm, I'm giving you ",
+  "Okay! I'm selling you ",
+  "You got it! I'm selling you ",
+  "Great! To confirm, I'm giving you ",
+  "Awesome, I'm giving you ",
+  "Just to confirm, thats ",
+  "Okay! I'll give you"
 ];
 
 let negotiationState = {
