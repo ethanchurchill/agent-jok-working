@@ -1,5 +1,5 @@
-[2020-10-14 14:42:28.00] Error: 
-[2020-10-14 14:42:28.00]
+[2020-10-27 21:38:39.04] Error: 
+[2020-10-27 21:38:39.04]
 {
   "name": "RequestError",
   "message": "Error: socket hang up",
@@ -13,18 +13,59 @@
     "method": "POST",
     "uri": "http://localhost:14010/relayMessage",
     "body": {
-      "text": "How about if I sell you for 0 USD.",
+      "text": "How about if I sell you 3 flour 3 milk for 7.4 USD.",
       "speaker": "Watson",
       "role": "seller",
       "addressee": "Human",
       "environmentUUID": "abcdefg",
-      "timeStamp": "2020-10-14T19:40:27.992Z",
+      "timeStamp": "2020-10-28T02:36:39.035Z",
       "bid": {
-        "quantity": {},
+        "quantity": {
+          "flour": 3,
+          "milk": 3
+        },
         "type": "SellOffer",
         "price": {
           "unit": "USD",
-          "value": 0
+          "value": 7.4
+        }
+      }
+    },
+    "json": true,
+    "simple": true,
+    "resolveWithFullResponse": false,
+    "transform2xxOnly": false
+  }
+}
+[2020-10-27 21:39:01.94] Error: 
+[2020-10-27 21:39:01.94]
+{
+  "name": "RequestError",
+  "message": "Error: socket hang up",
+  "cause": {
+    "code": "ECONNRESET"
+  },
+  "error": {
+    "code": "ECONNRESET"
+  },
+  "options": {
+    "method": "POST",
+    "uri": "http://localhost:14010/relayMessage",
+    "body": {
+      "text": "How about if I sell you 3 sugar for 4.49 USD.",
+      "speaker": "Watson",
+      "role": "seller",
+      "addressee": "Human",
+      "environmentUUID": "abcdefg",
+      "timeStamp": "2020-10-28T02:37:01.930Z",
+      "bid": {
+        "quantity": {
+          "sugar": 3
+        },
+        "type": "SellOffer",
+        "price": {
+          "unit": "USD",
+          "value": 4.49
         }
       }
     },

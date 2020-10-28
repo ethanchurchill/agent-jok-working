@@ -33,13 +33,17 @@ let roundId;
 const rejectionMessages = [
   "No thanks. Your offer is much too low for me to consider.",
   "Forget it. That's not a serious offer.",
-  "Sorry. You're going to have to do a lot better than that!"
+  "Sorry. You're going to have to do a lot better than that!",
+  "I'm afraid that offer isn't going to cut it.",
+  "Sorry, but that is too low of an offer.",
+  "No thanks. Your offer is not high enough."
 ];
 
 const acceptanceMessages = [
   "You've got a deal! I'll sell you",
   "You've got it! I'll let you have",
-  "I accept your offer. Just to confirm, I'll give you"
+  "I accept your offer. Just to confirm, I'll give you",
+  "Yeah that's it! I'll part with"
 ];
 
 const confirmAcceptanceMessages = [
@@ -54,7 +58,7 @@ let negotiationState = {
   "roundDuration": defaultRoundDuration
 };
 
-let polite = true; // Set to true to force agent to only respond to offers addressed to it; false will yield rude behavior
+let polite = false; // Set to true to force agent to only respond to offers addressed to it; false will yield rude behavior
 let logLevel = 1;
 
 if (argv.level) {
@@ -432,7 +436,7 @@ function generateBid(offer) {
 
     let markupRatio = utility / bundleCost;
 
-    if (markupRatio > 2.0 || (myLastPrice != null && Math.abs(offer.price - myLastPrice) < minDicker)) { // If our markup is large, accept the offer
+    if (markupRatio > 1.8 || (myLastPrice != null && Math.abs(offer.price - myLastPrice) < minDicker)) { // If our markup is large, accept the offer
       bid.type = 'Accept';
       bid.price = offer.price;
     }
@@ -451,7 +455,7 @@ function generateBid(offer) {
   }
   else { // The buyer didn't include a proposed price, leaving us free to consider how much to charge.
     // Set markup between 2 and 3 times the cost of the bundle and generate price accordingly.
-    let markupRatio = 2.0 + Math.random();
+    let markupRatio = 1.8 + Math.random();
     let bundleCost = -1.0 * utility; // Utility is -1 * bundle cost since price is interpreted as 0
     bid.type = 'SellOffer';
     bid.price = {
@@ -482,14 +486,14 @@ function generateSellPrice(bundleCost, offerPrice, myLastPrice, timeRemaining) {
     maxMarkupRatio = myLastPrice/bundleCost - 1.0;
   }
   else {
-    maxMarkupRatio = 2.0 - 1.5 * (1.0 - timeRemaining/negotiationState.roundDuration); // Linearly decrease max markup ratio towards just 0.5 at the conclusion of the round
+    maxMarkupRatio = 1.8 - 1.3 * (1.0 - timeRemaining/negotiationState.roundDuration); // Linearly decrease max markup ratio towards just 0.5 at the conclusion of the round
   }
-  minMarkupRatio = Math.max(markupRatio, 0.20);
+  minMarkupRatio = Math.max(markupRatio, 0.15);
 
   logExpression("Min and max markup ratios are: " + minMarkupRatio + " and " + maxMarkupRatio + ".", 2);
 
   let minProposedMarkup = Math.max(minMarkupRatio, markupRatio);
-  let newMarkupRatio = minProposedMarkup + Math.random() * (maxMarkupRatio - minProposedMarkup);
+  let newMarkupRatio = minProposedMarkup + (Math.random() * (maxMarkupRatio - minProposedMarkup)) / 1.2;
 
   logExpression("newMarkupRatio: " + newMarkupRatio, 2);
 
