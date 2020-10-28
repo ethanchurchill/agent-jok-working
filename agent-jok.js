@@ -704,10 +704,33 @@ function getSafe(p, o, d) {
 
 function translateBid(bid, confirm) {
   let text = "";
+  let count = 0;
+  let and = "";
   if(bid.type == 'SellOffer') {
-    text = "How about if I sell you";
+    text = "Ok, how about if I sell you";
     Object.keys(bid.quantity).forEach(good => {
-      text += " " + bid.quantity[good] + " " + good;
+      if(count > 0){
+        and = "and ";
+      }
+      if(good == "egg") {
+        text += " " + and + bid.quantity[good] + " " + good + "(s)";
+      }
+      else if(good == "milk" || good == "flour" || good == "sugar") {
+        text += " " + and + bid.quantity[good] + " cup(s) of " + good;
+      }
+      else if(good == "chocolate") {
+        text += " " + and + bid.quantity[good] + " ounce(s) of " + good;
+      }
+      else if(good == "vanilla") {
+        text += " " + and + bid.quantity[good] + " teaspoon(s) of " + good;
+      }
+      else if(good == "blueberry") {
+        text += " " + and + bid.quantity[good] + " packs(s) of " + good;
+      }
+      else{
+        text += " " + bid.quantity[good] + " " + good;
+      }
+      count = count + 1;
     });
     text += " for " + bid.price.value + " " + bid.price.unit + ".";
   }
@@ -722,7 +745,28 @@ function translateBid(bid, confirm) {
       text = selectMessage(acceptanceMessages);
     }
     Object.keys(bid.quantity).forEach(good => {
-      text += " " + bid.quantity[good] + " " + good;
+      if(count > 0){
+        and = "and ";
+      }
+      if(good == "egg") {
+        text += " " + and + bid.quantity[good] + " " + good + "(s)";
+      }
+      else if(good == "milk" || good == "flour" || good == "sugar") {
+        text += " " + and + bid.quantity[good] + " cup(s) of " + good;
+      }
+      else if(good == "chocolate") {
+        text += " " + and + bid.quantity[good] + " ounce(s) of " + good;
+      }
+      else if(good == "vanilla") {
+        text += " " + and + bid.quantity[good] + " teaspoon(s) of " + good;
+      }
+      else if(good == "blueberry") {
+        text += " " + and + bid.quantity[good] + " packs(s) of " + good;
+      }
+      else{
+        text += " " + bid.quantity[good] + " " + good;
+      }
+      count = count + 1;
     });
     text += " for " + bid.price.value + " " + bid.price.unit + ".";
   }
